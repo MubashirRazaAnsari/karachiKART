@@ -1,18 +1,30 @@
-import { generateMetadata, baseViewport } from '@/lib/metadata';
-import AdminNavigation from '@/app/components/admin/AdminNavigation';
+import { ReactNode } from 'react';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import AdminNavigation from './components/AdminNavigation';
 
-export const metadata = generateMetadata(
-  'Admin Dashboard',
-  'Manage your admin account and listings'
-);
+export const metadata = {
+  title: 'Admin Dashboard',
+  description: 'Manage your admin account and listings'
+};
 
-export const viewport = baseViewport;
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
+  const session = await getServerSession();
+  
+  if (!session?.user || session.user.role !== 'admin') {
+    redirect('/auth/signin');
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex pt-2">
