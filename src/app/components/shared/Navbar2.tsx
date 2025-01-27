@@ -79,10 +79,10 @@ const Navbar = () => {
       switch(session.user.role) {
         case 'admin':
           baseMenus.role = [
-            { label: 'Admin Dashboard', href: '/dashboard', icon: FaChartLine },
-            { label: 'Manage Users', href: '/users', icon: FaUsers },
-            { label: 'Manage Products', href: '/products', icon: FaBox },
-            { label: 'Settings', href: '/settings', icon: FaCog },
+            { label: 'Admin Dashboard', href: '/admin/dashboard', icon: FaChartLine },
+            { label: 'Manage Users', href: '/admin/users', icon: FaUsers },
+            { label: 'Manage Products', href: '/admin/products', icon: FaBox },
+            { label: 'Settings', href: '/admin/settings', icon: FaCog },
           ];
           break;
         case 'seller':
@@ -388,7 +388,7 @@ const UserDropdown = ({ user }: { user: any }) => {
       case 'admin':
         return [
           ...baseItems,
-          { label: 'Admin Dashboard', href: '/dashboard', icon: FaChartLine },
+          { label: 'Admin Dashboard', href: '/admin/dashboard', icon: FaChartLine },
           { label: 'Seller Dashboard', href: '/seller', icon: FaStore },
           { label: 'Provider Dashboard', href: '/provider', icon: FaStore },
           { label: 'Settings', href: '/settings', icon: FaCog },
