@@ -6,7 +6,12 @@ export default withAuth(
   function middleware(req) {
     const token = req.nextauth.token;
     const path = req.nextUrl.pathname;
-    const role = token?.role as Role;
+    const role = token?.role;
+
+    // Allow auth routes
+    if (path.startsWith('/api/auth') || path.startsWith('/auth')) {
+      return NextResponse.next();
+    }
 
     // Allow all users to access profile routes
     if (path.startsWith('/profile')) {
