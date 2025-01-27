@@ -37,8 +37,12 @@ const nextConfig = {
     ];
   },
   output: 'standalone',
+  env: {
+    NEXTAUTH_URL: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000',
+  },
   experimental: {
     serverActions: true,
+    serverComponentsExternalPackages: ['@sanity/image-url', '@sanity/vision'],
   }
 }
 
