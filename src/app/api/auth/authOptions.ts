@@ -69,20 +69,20 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.id = user.id;
         token.role = user.role || 'customer';
-        token._createdAt = user._createdAt;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
-        session.user.role = token.role as Role;
-        session.user._createdAt = token._createdAt as string;
+        session.user.role = (token.role as string) as Role;
       }
       return session;
     },
     async redirect({ url, baseUrl }) {
-      return getBaseUrl()
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     },
   },
   pages: {
