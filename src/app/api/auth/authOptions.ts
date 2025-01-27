@@ -5,6 +5,7 @@ import { SanityAdapter } from "next-auth-sanity";
 import { client } from "@/sanity/lib/client";
 import bcrypt from "bcryptjs";
 import type { Role } from '@/types';
+import { getBaseUrl } from '@/lib/utils'
 
 if (!process.env.NEXTAUTH_SECRET) {
   throw new Error("NEXTAUTH_SECRET is not set");
@@ -58,14 +59,10 @@ export const authOptions: NextAuthOptions = {
         };
       }
     }),
-    ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
-      ? [
-          GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-          }),
-        ]
-      : []),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
@@ -85,7 +82,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      return baseUrl;
+      return getBaseUrl()
     },
   },
   pages: {
