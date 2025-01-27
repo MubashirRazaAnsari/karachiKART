@@ -35,7 +35,8 @@ export const authOptions: NextAuthOptions = {
               email,
               password,
               role,
-              _createdAt
+              _createdAt,
+              image
             }`,
             { email: credentials.email }
           );
@@ -56,7 +57,7 @@ export const authOptions: NextAuthOptions = {
             email: user.email,
             role: user.role || 'customer',
             _createdAt: user._createdAt,
-            image: null
+            image: user.image || null
           } as any;
         } catch (error) {
           console.error('Auth error:', error);
@@ -75,7 +76,7 @@ export const authOptions: NextAuthOptions = {
     signOut: '/',
   },
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.role = user.role || 'customer';
@@ -90,15 +91,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      if (url.includes('/api/auth/signin')) {
-        return baseUrl;
-      }
-      if (url.startsWith("/")) {
-        return `${baseUrl}${url}`;
-      }
-      if (url.startsWith(baseUrl)) {
-        return url;
-      }
+      // Always redirect to home after sign in
       return baseUrl;
     },
   },

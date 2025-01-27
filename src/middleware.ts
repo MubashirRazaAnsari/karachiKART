@@ -1,61 +1,33 @@
 import { withAuth } from 'next-auth/middleware';
-import { NextResponse } from 'next/server';
-import { Role } from '@/types';
 
-export default withAuth(
-  function middleware(req) {
-    const token = req.nextauth.token;
-    const path = req.nextUrl.pathname;
-    const role = token?.role;
-
-    // Allow auth routes
-    if (path.startsWith('/api/auth') || path.startsWith('/auth')) {
-      return NextResponse.next();
-    }
-
-    // Allow all users to access profile routes
-    if (path.startsWith('/profile')) {
-      return NextResponse.next();
-    }
-
-    // Admin can access everything
-    if (role === 'admin') {
-      return NextResponse.next();
-    }
-
-    // Provider routes protection
-    if (path.startsWith('/provider')) {
-      if (role === 'provider') {
-        return NextResponse.next();
-      }
-      return NextResponse.redirect(new URL('/', req.url));
-    }
-
-    // Seller routes protection
-    if (path.startsWith('/seller')) {
-      if (role === 'seller') {
-        return NextResponse.next();
-      }
-      return NextResponse.redirect(new URL('/', req.url));
-    }
-
-    return NextResponse.next();
+export default withAuth({
+  pages: {
+    signIn: '/auth/signin',
   },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token
+  callbacks: {
+    authorized({ token, req }) {
+      const path = req.nextUrl.pathname;
+      
+      // Public routes
+      if (path === '/' || path.startsWith('/auth')) {
+        return true;
+      }
+
+      // Protected routes
+      if (!token) return false;
+
+      if (path.startsWith('/admin')) return token.role === 'admin';
+      if (path.startsWith('/seller')) return token.role === 'seller';
+      if (path.startsWith('/provider')) return token.role === 'provider';
+      if (path.startsWith('/profile')) return true;
+
+      return true;
     },
-  }
-);
+  },
+});
 
 export const config = {
   matcher: [
-    '/profile/:path*',
-    '/seller/:path*',
-    '/provider/:path*',
-    '/admin/:path*',
-    '/api/auth/:path*',
-    '/auth/signin',
-    '/auth/error'
-  ]
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 }; 
