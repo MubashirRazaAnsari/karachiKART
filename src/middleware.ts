@@ -54,6 +54,8 @@ export const config = {
     '/seller/:path*',
     '/provider/:path*',
     '/admin/:path*',
-    '/api/auth/:path*'
+    '/api/auth/:path*',
+    '/auth/signin',
+    '/auth/error'
   ]
 }; 

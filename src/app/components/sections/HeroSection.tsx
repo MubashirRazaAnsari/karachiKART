@@ -34,7 +34,7 @@ export default function HeroSection() {
     <section className="relative w-full min-h-[500px] h-[90vh] overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/hero.jpg"
+        src="/feature4.jpg"
         alt="Modern fashion and lifestyle"
         fill
         priority

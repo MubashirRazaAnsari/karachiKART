@@ -23,39 +23,45 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error('Please enter your email and password');
+        try {
+          if (!credentials?.email || !credentials?.password) {
+            throw new Error('Please enter your email and password');
+          }
+
+          const user = await client.fetch(
+            `*[_type == "user" && email == $email][0]{
+              _id,
+              name,
+              email,
+              password,
+              role,
+              _createdAt
+            }`,
+            { email: credentials.email }
+          );
+
+          if (!user) {
+            throw new Error('CredentialsSignin');
+          }
+
+          const passwordMatch = await bcrypt.compare(credentials.password, user.password);
+
+          if (!passwordMatch) {
+            throw new Error('CredentialsSignin');
+          }
+
+          return {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role || 'customer',
+            _createdAt: user._createdAt,
+            image: null
+          } as any;
+        } catch (error) {
+          console.error('Auth error:', error);
+          return null;
         }
-
-        const user = await client.fetch(
-          `*[_type == "user" && email == $email][0]{
-            _id,
-            name,
-            email,
-            password,
-            role,
-            _createdAt
-          }`,
-          { email: credentials.email }
-        );
-
-        if (!user) {
-          throw new Error('No user found with this email');
-        }
-
-        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
-
-        if (!passwordMatch) {
-          throw new Error('Incorrect password');
-        }
-
-        return {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role || 'customer',
-          _createdAt: user._createdAt
-        };
       }
     }),
     GoogleProvider({
@@ -66,9 +72,10 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin',
     error: '/auth/error',
+    signOut: '/',
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
         token.role = user.role || 'customer';
@@ -83,13 +90,16 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
+      if (url.includes('/api/auth/signin')) {
+        return baseUrl;
+      }
       if (url.startsWith("/")) {
-        return `${baseUrl}${url}`
+        return `${baseUrl}${url}`;
       }
       if (url.startsWith(baseUrl)) {
-        return url
+        return url;
       }
-      return baseUrl
+      return baseUrl;
     },
   },
   session: {

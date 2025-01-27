@@ -27,7 +27,7 @@ export default function FeaturedBanner() {
   return (
     <section className="relative min-h-[500px] h-[70vh] bg-gray-100">
       <Image
-        src="/hero2.jpg"
+        src="/feature1.jpg"
         alt="Featured seasonal collection showcase"
         fill
         className="object-cover object-center"
