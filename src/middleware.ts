@@ -48,6 +48,7 @@ export const config = {
     '/profile/:path*',
     '/seller/:path*',
     '/provider/:path*',
-    '/admin/:path*'
+    '/admin/:path*',
+    '/api/auth/:path*'
   ]
 }; 

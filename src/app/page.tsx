@@ -14,6 +14,7 @@ import GenderCollections from './components/sections/GenderCollections';
 import ProductCarousel from './components/sections/ProductCarousel';
 import FurnitureShowcase from './components/sections/FurnitureShowcase';
 import SectionWrapper from './components/sections/SectionWrapper';
+import ProductListingSkeleton from './components/ProductListingSkeleton';
 
 interface ProductState {
   trending: Product[];
@@ -129,7 +130,6 @@ export default function Home() {
     fetchAllData();
   }, []);
 
-  if (loading) return <LoadingSpinner />;
   if (error) return <ErrorDisplay error={error} />;
 
   return (
@@ -137,7 +137,9 @@ export default function Home() {
       <HeroSection />
       
       <SectionWrapper title="Trending Now" buttonText="View All" href="/trending">
-        <Cardgrid products={products.trending} lggrid={true} />
+        {loading ? <ProductListingSkeleton /> : (
+          <Cardgrid products={products.trending} lggrid={true} />
+        )}
       </SectionWrapper>
 
       <FeaturedBanner />
@@ -159,11 +161,13 @@ export default function Home() {
         buttonText="See New Arrivals" 
         href="/new"
       >
-        <ProductGrid 
-          products={products.secondHand} 
-          showBidding={true} 
-          productType="secondhand" 
-        />
+        {loading ? <ProductListingSkeleton /> : (
+          <ProductGrid 
+            products={products.secondHand} 
+            showBidding={true} 
+            productType="secondhand" 
+          />
+        )}
       </SectionWrapper>
 
       <FurnitureShowcase />
@@ -173,7 +177,9 @@ export default function Home() {
         buttonText="Browse All" 
         href="/furniture"
       >
-        <Cardgrid products={products.furniture as Product[]} lggrid={true} />
+        {loading ? <ProductListingSkeleton /> : (
+          <Cardgrid products={products.furniture as Product[]} lggrid={true} />
+        )}
       </SectionWrapper>
     </main>
   );
