@@ -15,17 +15,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-export const metadata = {
-  title: 'Analytics | Admin Dashboard',
-  description: 'Analytics and statistics for KarachiKART admin',
-};
-
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-};
-
 const salesData = [
   { month: 'Jan', sales: 4000, orders: 240 },
   { month: 'Feb', sales: 3000, orders: 198 },
