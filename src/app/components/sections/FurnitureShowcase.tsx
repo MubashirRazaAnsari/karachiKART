@@ -31,10 +31,11 @@ export default function FurnitureShowcase() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            animate={{ opacity: 1 }}
             className="relative h-96 rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
-              src="/heroFuniture.png"
+              src="/images/hero/heroFuniture.png"
               alt="Modern furniture"
               fill
               className="object-cover object-center"
