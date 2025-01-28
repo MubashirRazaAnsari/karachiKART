@@ -31,6 +31,5 @@ export const config = {
     '/admin/:path*',
     '/seller/:path*',
     '/provider/:path*',
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }; 

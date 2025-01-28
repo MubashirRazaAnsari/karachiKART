@@ -16,9 +16,9 @@ const Footer = () => {
   }
 
   return (
-    <footer className='w-full bg-gray-100 z-50 text-black'>
+    <footer className='w-full bg-[#1A1A1A] z-50 text-black'>
       {/* Newsletter Section */}
-      <div className='w-full h-1/2 bg-gray-100'>
+      <div className='w-full bg-[#1A1A1A] h-1/2 '>
       <div className='w-[100vw] px-10 md:px-6 md:w-[80vw] mx-auto bg-black text-white rounded-lg p-4 md:p-8 my-8'>
         <div className='flex flex-col md:flex-row justify-between items-center gap-8 py-4 md:py-6'>
           <h2 className='text-2xl md:text-3xl lg:text-5xl font-bold max-w-md text-center md:text-left'>
@@ -56,13 +56,13 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className='bg-gray-100 text-black'>
+      <div className='bg-[#1A1A1A] text-white'>
         <div className='w-[90vw] md:w-[80vw] mx-auto py-12'>
           <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6'>
             {/* Brand Section */}
             <div className='col-span-2 md:col-span-3 lg:col-span-2'>
               <h1 className='text-2xl font-bold mb-6'>Karachi<span className='text-red-500'>KART</span></h1>
-              <p className='text-gray-600 mb-6 max-w-md'>
+              <p className='text-white mb-6 max-w-md'>
                 We have clothes that suits your style <br /> and which you&apos;re proud to wear. <br /> From women to men.
               </p>
               <div className='flex gap-4'>
@@ -83,45 +83,45 @@ const Footer = () => {
 
             {/* Company Links */}
             <div>
-              <h3 className='font-bold mb-6 text-black'>COMPANY</h3>
+              <h3 className='font-bold mb-6'>COMPANY</h3>
               <ul className='space-y-4'>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>About</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Features</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Works</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Career</Link></li>
+                <li><Link href="/about" className='text-gray-100 hover:text-gray-300'>About</Link></li>
+                <li><Link href="/new" className='text-gray-100 hover:text-gray-300'>Features</Link></li>
+                <li><Link href="/secondhandProducts" className='text-gray-100 hover:text-gray-300'>Works</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300 cursor-'>Career</Link></li>
               </ul>
             </div>
 
             {/* Help Links */}
             <div>
-              <h3 className='font-bold mb-6 text-black'>HELP</h3>
+              <h3 className='font-bold mb-6'>HELP</h3>
               <ul className='space-y-4'>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Customer Support</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Delivery Details</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Terms & Conditions</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Privacy Policy</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Customer Support</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Delivery Details</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Terms & Conditions</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Privacy Policy</Link></li>
               </ul>
             </div>
 
             {/* FAQ Links */}
             <div>
-              <h3 className='font-bold mb-6 text-black'>FAQ</h3>
+              <h3 className='font-bold mb-6 text-white'>FAQ</h3>
               <ul className='space-y-4'>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Account</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Manage Deliveries</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Orders</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Payments</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Account</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Manage Deliveries</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Orders</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Payments</Link></li>
               </ul>
             </div>
 
             {/* Resources Links */}
             <div>
-              <h3 className='font-bold mb-6 text-black'>RESOURCES</h3>
+              <h3 className='font-bold mb-6 text-white'>RESOURCES</h3>
               <ul className='space-y-4'>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Free eBooks</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Development Tutorial</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>How to - Blog</Link></li>
-                <li><Link href="/" className='text-gray-600 hover:text-black'>Youtube Playlist</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Free eBooks</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Development Tutorial</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>How to - Blog</Link></li>
+                <li><Link href="/" className='text-gray-100 hover:text-gray-300'>Youtube Playlist</Link></li>
               </ul>
             </div>
           </div>
@@ -132,7 +132,7 @@ const Footer = () => {
       <div className='border-t '>
         <div className='w-[90vw] md:w-[80vw] mx-auto py-6 md:py-8 flex flex-col md:flex-row justify-between items-center gap-4'>
           <p className='text-gray-400 text-center md:text-left'>
-            Shop.co © 2000-2023, All Rights Reserved
+            KarachiKART © 2024-2025, All Rights Reserved
           </p>
           <div className='flex flex-wrap justify-center gap-4'>
             <Image
