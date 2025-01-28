@@ -34,7 +34,7 @@ export default function HeroSection() {
     <section className="relative w-full min-h-[500px] h-[90vh] overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/feature4.jpg"
+        src="/feature5.jpeg"
         alt="Modern fashion and lifestyle"
         fill
         priority
@@ -55,7 +55,15 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 mt-16 sm:mt-20"
+              className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold sm:mb-6 mt-16 sm:mt-20"
+            >
+              Karachi<span className="text-gray-200">KART</span>
+            </motion.h1>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-2xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-10"
             >
               Your One-Stop Shop
             </motion.h1>

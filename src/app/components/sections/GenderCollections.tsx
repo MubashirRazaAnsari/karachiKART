@@ -41,10 +41,10 @@ function CollectionSection({ title, href, products }: {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+      className="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition-shadow"
     >
       <Link href={href}>
-        <div className="relative h-96">
+        <div className="relative h-96 hover:scale-105 transition-all duration-300">
           <Image
             src={products[0]?.productImage || '/images/product-placeholder.png'}
             alt={title}

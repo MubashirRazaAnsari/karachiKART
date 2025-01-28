@@ -26,6 +26,8 @@ const newProductSchema = {
         type: 'boolean',
         initialValue: false,
       },
+      {name: 'discount', type:'boolean', title: 'Discount', initialValue: false},
+      {name: 'discountPercentage', type: 'number', title: 'Discount Percentage', validation: (Rule: any) => Rule.required().min(0).max(100) , initialValue: 0},
       {
         name: 'reviews',
         title: 'Reviews',

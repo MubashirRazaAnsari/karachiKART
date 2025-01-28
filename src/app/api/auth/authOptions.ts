@@ -42,13 +42,13 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (!user) {
-            throw new Error('CredentialsSignin');
+            throw new Error('Invalid credentials');
           }
 
           const passwordMatch = await bcrypt.compare(credentials.password, user.password);
 
           if (!passwordMatch) {
-            throw new Error('CredentialsSignin');
+            throw new Error('Invalid credentials');
           }
 
           return {

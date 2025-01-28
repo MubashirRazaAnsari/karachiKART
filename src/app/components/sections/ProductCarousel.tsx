@@ -67,13 +67,13 @@ function CarouselItem({ product }: { product: Product | ExternalProduct }) {
   const productType = isExternalProduct(product) ? 'products' : (product._type === 'secondhandProduct' ? 'secondhand' : 'new');
 
   return (
-    <Link href={`/${productType}/${productId}`}>
+    <Link href={`/${productType}/${productId}`} className="shadow-lg hover:scale-105 transition-all duration-300">
       <div className="relative w-full aspect-[4/3] h-[400px] md:h-[600px]">
         <Image
           src={imageUrl}
           alt={`Product image of ${productName}`}
           fill
-          className="object-contain bg-white"
+          className="object-contain bg-white hover:scale-105 transition-all duration-300"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           priority={true}
         />

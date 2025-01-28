@@ -17,7 +17,7 @@ export default withAuth({
       if (!token) return false;
 
       if (path.startsWith('/admin')) return token.role === 'admin';
-      if (path.startsWith('/seller')) return token.role === 'seller';
+      if (path.startsWith('/seller')) return token.role === 'seller' ;
       if (path.startsWith('/provider')) return token.role === 'provider';
       if (path.startsWith('/profile')) return true;
 
@@ -28,6 +28,9 @@ export default withAuth({
 
 export const config = {
   matcher: [
+    '/admin/:path*',
+    '/seller/:path*',
+    '/provider/:path*',
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }; 

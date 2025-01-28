@@ -78,7 +78,7 @@ export default function ProductGrid({ products, showBidding, productType }: Prod
       {products.map((product) => (
         <div 
           key={product._id} 
-          className="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-200 relative"
+          className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 relative hover:scale-105 transition-all duration-300"
         >
           {/* Wishlist Button */}
           <button

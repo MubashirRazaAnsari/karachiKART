@@ -7,11 +7,11 @@ import { useState } from 'react';
 import { FaBars, FaTimes, FaChartBar, FaBox, FaShoppingCart, FaUsers, FaCog } from 'react-icons/fa';
 
 const menuItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: FaChartBar },
-  { href: '/products', label: 'Products', icon: FaBox },
-  { href: '/orders', label: 'Orders', icon: FaShoppingCart },
-  { href: '/users', label: 'Users', icon: FaUsers },
-  { href: '/settings', label: 'Settings', icon: FaCog },
+  { href: '/admin/dashboard', label: 'Dashboard', icon: FaChartBar },
+  { href: '/admin/products', label: 'Products', icon: FaBox },
+  { href: '/admin/orders', label: 'Orders', icon: FaShoppingCart },
+  { href: '/admin/users', label: 'Users', icon: FaUsers },
+  { href: '/admin/settings', label: 'Settings', icon: FaCog },
 ];
 
 export default function AdminNavigation() {

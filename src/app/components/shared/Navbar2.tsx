@@ -135,13 +135,13 @@ const Navbar = () => {
   const dashboardLink = getDashboardLink();
 
   return (
-    <nav className="sticky top-0 z-[1000] bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-[1000] bg-[#1A1A1A] shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
         {/* Main Navbar */}
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold">
-            Karachi<span className="text-gray-600">KART</span>
+          <Link href="/" className="text-xl font-bold text-white">
+            Karachi<span className="text-gray-300">KART</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -251,18 +251,18 @@ const Navbar = () => {
 
             {/* Cart */}
             <Link href="/cart" className="relative text-gray-700 hover:text-gray-900">
-              <FaShoppingBag className="h-6 w-6" />
+              <FaShoppingBag className="h-6 w-6 text-white" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {totalItems}
                 </span>
               )}
             </Link>
 
             <Link href="/wishlist" className="relative text-gray-700 hover:text-gray-900">
-              <FaHeart className="h-6 w-6" />
+              <FaHeart className="h-6 w-6 text-white" />
               {wishlist.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {wishlist.length}
                 </span>
               )}
@@ -272,7 +272,7 @@ const Navbar = () => {
             {session ? (
               <UserDropdown user={session.user} />
             ) : (
-              <Link href="/auth/signin" className="nav-link">
+              <Link href="/auth/signin" className="nav-link text-white">
                 Sign In
               </Link>
             )}

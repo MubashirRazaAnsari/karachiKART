@@ -14,7 +14,7 @@ export default function Card({ id, title, category, price, image }: CardProps) {
   const imageUrl = image || '/images/product-placeholder.png';
   
   return (
-    <Link href={`/new/${id}`}>
+    <Link href={`/new/${id}`} className="shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl">
       <div className="group cursor-pointer border rounded-lg p-4 hover:shadow-lg transition-all duration-300">
         <div className="relative aspect-square overflow-hidden rounded-md bg-white">
           <Image

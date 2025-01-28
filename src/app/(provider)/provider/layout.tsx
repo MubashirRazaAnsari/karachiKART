@@ -16,12 +16,15 @@ export default async function ProviderLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
   
   if (!session) {
     redirect('/auth/signin');
   }
 
+  if (session.user.role !== 'provider' && session.user.role !== 'admin') {
+    redirect('/');
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">

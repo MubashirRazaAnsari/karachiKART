@@ -25,7 +25,7 @@ export default function FeaturedBanner() {
   ];
 
   return (
-    <section className="relative min-h-[500px] h-[70vh] bg-gray-100">
+    <section className="relative min-h-[500px] h-[90vh] md:h-[70vh] bg-gray-100">
       <Image
         src="/feature1.jpg"
         alt="Featured seasonal collection showcase"
@@ -73,7 +73,7 @@ export default function FeaturedBanner() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 * (index + 2) }}
-                  className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg"
+                  className="bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                 >
                   <feature.icon className="w-6 sm:w-8 h-6 sm:h-8 text-white mx-auto mb-3 sm:mb-4" />
                   <h3 className="text-lg sm:text-xl font-semibold mb-2">{feature.title}</h3>

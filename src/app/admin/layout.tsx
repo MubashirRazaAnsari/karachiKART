@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import AdminNavigation from './components/AdminNavigation';
+import { authOptions } from '../api/auth/authOptions';
 
 export const metadata = {
   title: 'Admin Dashboard',
@@ -19,11 +20,6 @@ export default async function AdminLayout({
 }: {
   children: ReactNode;
 }) {
-  const session = await getServerSession();
-  
-  if (!session?.user || session.user.role !== 'admin') {
-    redirect('/auth/signin');
-  }
 
   return (
     <div className="min-h-screen bg-gray-100">
