@@ -218,14 +218,14 @@ export default function AdminOrderDetailsPage({
             <div className="divide-y">
               {order.items.map((item) => (
                 <div key={item._id} className="py-4 flex items-center">
-                  <div className="relative w-20 h-20 flex-shrink-0">
+                  {/* <div className="relative w-20 h-20 flex-shrink-0">
                     <Image
                       src={urlFor(item.product.productImage).url() || '/images/placeholder.png'}
                       alt={item.product.name}
                       fill
                       className="object-cover rounded"
                     />
-                  </div>
+                  </div> */}
                   <div className="ml-6 flex-1">
                     <h3 className="font-medium">{item.product.name}</h3>
                     <p className="text-sm text-gray-500">

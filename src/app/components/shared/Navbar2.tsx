@@ -64,7 +64,6 @@ const Navbar = () => {
         { label: 'New Products', href: '/new', icon: FaBox },
         { label: 'Second Hand', href: '/secondhand', icon: FaBox },
         { label: 'Services', href: '/services', icon: FaBox },
-        { label: 'Compare', href: '/compare', icon: FaChartLine },
       ],
       help: [
         { label: 'Help Center', href: '/help', icon: FaHeadset },
@@ -149,6 +148,10 @@ const Navbar = () => {
             <Link href="/" className="nav-link">
               Home
             </Link>
+            <Link href="/compare" className="nav-link">
+              Compare
+            </Link>
+            
 
             {/* Products Dropdown */}
             <div

@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'KarachiKart',
-  description: 'Your app description',
+  description: 'Your One-Stop Shop',
   icons: {
     icon: '/favicon.ico',
   },
@@ -31,11 +31,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Check if we're in a product page using pathname
-  const isProductPage = typeof window !== 'undefined' 
-    ? window.location.pathname.startsWith('/new') || window.location.pathname.startsWith('/secondhand')
-    : false;
-
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} min-h-screen flex flex-col overflow-x-hidden`}>
@@ -44,12 +39,12 @@ export default function RootLayout({
             <WishlistProvider>
               <CompareProvider>
                 <CartProvider>
-                  {!isProductPage && <Navbar2 />}
+                 <Navbar2 />
+                  <Toaster position="top-right" />
                   <main className="flex-grow min-h-screen">
                     {children}
                   </main>
                   <Footer />
-                  <Toaster position="bottom-right" />
                 </CartProvider>
               </CompareProvider>
             </WishlistProvider>

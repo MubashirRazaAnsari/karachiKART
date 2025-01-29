@@ -36,6 +36,7 @@ export interface Order {
       _id: string;
       name: string;
       price: number;
+      image?: string;
       productImage: string;
     };
     quantity: number;

@@ -17,8 +17,8 @@ export default withAuth({
       if (!token) return false;
 
       if (path.startsWith('/admin')) return token.role === 'admin';
-      if (path.startsWith('/seller')) return token.role === 'seller' ;
-      if (path.startsWith('/provider')) return token.role === 'provider';
+      if (path.startsWith('/seller')) return token.role === 'seller' || token.role === 'admin';
+      if (path.startsWith('/provider')) return token.role === 'provider' || token.role === 'admin';
       if (path.startsWith('/profile')) return true;
 
       return true;
