@@ -68,7 +68,7 @@ export default function SearchBar() {
           placeholder="Search products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="bg-gray-100 border-none outline-none w-[180px] md:w-[220px] lg:w-[300px]"
+          className="bg-gray-100 border-none outline-none w-[180px] md:w-[220px] lg:w-[300px] text-gray-900"
           spellCheck="false"
         />
         {searchTerm && (
@@ -101,7 +101,7 @@ export default function SearchBar() {
                 />
               </div>
               <div>
-                <h4 className="font-medium">{product.name}</h4>
+                <h4 className="font-medium text-gray-900">{product.name}</h4>
                 <p className="text-sm text-gray-600">${product.price.toFixed(2)}</p>
               </div>
             </button>
